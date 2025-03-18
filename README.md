@@ -1,5 +1,5 @@
 # MEMORY ALLOCATION IN C
-## Inspired by Tsoding
+## Inspired by Tsoding [link](https://github.com/tsoding)
 
 ## Setup
 ```
