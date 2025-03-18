@@ -12,10 +12,12 @@ do { \
     abort(); \
 } while(0)
 
-#define HEAP_CAP 640000
+#define HEAP_CAP_BYTES 640000
+static_assert(HEAP_CAP_BYTES % sizeof(intptr_t) == 0, "The heap capacity is divisible by the size of the pointer of the platform");
+#define HEAP_CAP_WORDS (HEAP_CAP_BYTES / sizeof(uintptr_t))
 
-static_assert(HEAP_CAP % sizeof(intptr_t) == 0, "The heap capacity is divisible by the size of the pointer of the platform");
-extern uintptr_t heap[HEAP_CAP];
+
+extern uintptr_t heap[HEAP_CAP_WORDS];
 
 #define CHUNK_LIST_CAP 1024
 
