@@ -18,6 +18,7 @@ static_assert(HEAP_CAP_BYTES % sizeof(intptr_t) == 0, "The heap capacity is divi
 
 
 extern uintptr_t heap[HEAP_CAP_WORDS];
+extern const uintptr_t *stack_base;
 
 #define CHUNK_LIST_CAP 1024
 
@@ -47,7 +48,7 @@ void chunk_list_insert(Chunk_List *list, void *ptr, size_t size);
 
 void chunk_list_merge(Chunk_List *dst, const Chunk_List *src);
 
-void chunk_list_dump(const Chunk_List *list);
+void chunk_list_dump(const Chunk_List *list, const char *name);
 
 int chunk_list_find(const Chunk_List *list, uintptr_t* ptr);
 
